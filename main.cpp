@@ -99,8 +99,8 @@ Thing 3) Oven
 Thing 4) Music studio
 5 properties:
     1) Number of microphones
-    2) Avliable instruments
-    3) Avliable outboard equipment
+    2) Available instruments
+    3) Available outboard equipment
     4) Number of engineers
     5) Cost per hour
 3 things it can do:
