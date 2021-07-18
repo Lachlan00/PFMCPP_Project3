@@ -57,23 +57,6 @@ Part1 will be broken up into 5 separate steps
 */
 
 /*
-Thing 10)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
- */
-
-
-
-
-/*
 Thing 1) Hotel
 5 properties:
     1) Number of rooms
@@ -129,7 +112,19 @@ Thing 4) Music studio
     3) Master audio
  */
 
-
+/*
+Thing 10) Tractor
+5 properties:
+    1) Wheels
+    2) Engine
+    3) Trailer
+    4) Gear box
+    5) Headlights
+3 things it can do:
+    1) Drive
+    2) Reverse
+    3) Turn on lights
+ */
 
 /*
  MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
