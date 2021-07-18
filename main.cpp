@@ -54,59 +54,59 @@ Thing: Car Wash
  */
 
 /*
-Thing 1)
+Thing 1) Hotel
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) Number of rooms
+    2) Number of guests
+    3) Gross revenue
+    4) Overhead costs per anum
+    5) Number of employees
 3 things it can do:
-    1)
-    2)
-    3)
+    1) Book in guests
+    2) Clean rooms
+    3) Valet service
  */
 
 /*
-Thing 2)
+Thing 2) Printer
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) Ink levels 
+    2) Electrcity consumption rate
+    3) Paper level
+    4) Maximum resolution
+    5) Brand name
 3 things it can do:
-    1)
-    2)
-    3)
+    1) Print documents
+    2) Load print jobs
+    3) Scan documents
  */
 
 /*
-Thing 3)
+Thing 3) Oven
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) Maximum temperature
+    2) Number of trays
+    3) Model ID
+    4) Energy consumption rating
+    5) Cost
 3 things it can do:
-    1)
-    2)
-    3)
+    1) Cook food
+    2) Consume electrictiy
+    3) Power filiments
  */
 
 /*
-Thing 4)
+Thing 4) Music studio
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) Number of microphones
+    2) Avliable instruments
+    3) Avliable outboard equipment
+    4) Number of engineers
+    5) Cost per hour
 3 things it can do:
-    1)
-    2)
-    3)
+    1) Recording musicians
+    2) Mix audio
+    3) Master audio
  */
 
 
