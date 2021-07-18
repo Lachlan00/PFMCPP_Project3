@@ -70,79 +70,6 @@ Part1 will be broken up into 5 separate steps
 */
 
 /*
-Thing 5)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
- */
-
-/*
-Thing 6)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
- */
-
-/*
-Thing 7)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
- */
-
-/*
-Thing 8)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
- */
-
-/*
-Thing 9)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
- */
-
-
-
-
-/*
 Thing 1) Hotel
 5 properties:
     1) Number of rooms
@@ -196,6 +123,76 @@ Thing 4) Music studio
     1) Recording musicians
     2) Mix audio
     3) Master audio
+ */
+
+/*
+Thing 5) Wheels
+5 properties:
+    1) tyres
+    2) hubcaps
+    3) bolts
+    4) size
+    5) air pressure
+3 things it can do:
+    1) rotate
+    2) release air
+    3) adjust turning angle
+ */
+
+/*
+Thing 6) Engine
+5 properties:
+    1) Number of cylinders
+    2) Oil level
+    3) Coolant level
+    4) Distance driven (kms)
+    5) Current RPM
+3 things it can do:
+    1) Fire pistons
+    2) Combust fuel
+    3) Propel vehicle
+ */
+
+/*
+Thing 7) Trailer
+5 properties:
+    1) Objects held
+    2) Tray size
+    3) Number of wheels
+    4) Maximum load (kg)
+    5) Registration plate number
+3 things it can do:
+    1) Hold objects
+    2) Dump load
+    3) Disconnect from vehicle
+ */
+
+/*
+Thing 8) Gear box
+5 properties:
+    1) Number of gears
+    2) Current gear engaged
+    3) Shaft rotation speed
+    4) Gear wear
+    5) Clutch pressure
+3 things it can do:
+    1) Increase torque
+    2) Decrease torque
+    3) Disengage gears (neutral)
+ */
+
+/*
+Thing 9) Headlights
+5 properties:
+    1) Wattage
+    2) Beam angle
+    3) Houseing shape
+    4) Bulb type
+    5) Candela
+3 things it can do:
+    1) Illuminate
+    2) Change intensity
+    3) Adjust beam angle
  */
 
 /*
