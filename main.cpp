@@ -149,6 +149,42 @@ Thing 1) Hotel
     3) Valet service
  */
 
+struct Hotel
+{
+  // Number of rooms
+  int numRooms = 85;
+  // Number of guests
+  int numGuests = 65;
+  // Gross revenue
+  float grossRevenue = 300000.f;
+  // Overhead costs per anum
+  float overheads = 80000.f;
+  // Number of employees
+  int numEmployees = 20;
+
+  struct Guest
+  {
+    std::string name = "Sally";
+    int age = 34;
+    int lengthOfStay = 4;
+    int roomNumber = 67;
+    float costPerNight = 120.f;
+
+    float chargeGuest(float amount);
+    void callRoom(int roomNumber);
+    void endStay(std::string guestName, int roomNumber);
+  };
+
+  // Book in guests
+  void bookGuests(Guest guest);
+  // Clean rooms
+  void cleanRoom(int roomNumber);
+  // Valet service
+  void valetCar(Guest guest, int parkingSpot);
+
+  Guest sally;
+};
+
 /*
 Thing 2) Printer
 5 properties:
@@ -163,6 +199,41 @@ Thing 2) Printer
     3) Scan documents
  */
 
+ struct Printer
+ {
+    // Ink levels
+    float inkLevel = 75.f; 
+    // Electrcity consumption rate
+    float electrictyConsumption = 140.f;
+    // Paper level
+    int paperLevel = 124;
+    // Maximum resolution
+    int maxRes = 300;
+    // Brand name
+    std::string brandName = "Canon";
+
+    struct PrintJob {
+      std::string documentFilename = "myDoc.doc";
+      int numCopies = 2;
+      int numPages = 12;
+      int resolution = 300;
+      std::string paperType = "A4";
+
+      void cancelJob(std::string jobID);
+      std::string checkJobStatus(std::string jobID);
+      void addToQueue(std::string printerID, std::string proity = "low");
+    };
+
+    // Print documents
+    void printDocument(PrintJob printJob);
+    // Load print jobs
+    void loadJobs(int queueNumber);
+    // Scan documents
+    void scanDocument(int resolution = 300);
+
+    PrintJob printJob;
+ };
+
 /*
 Thing 3) Oven
 5 properties:
@@ -176,6 +247,26 @@ Thing 3) Oven
     2) Consume electrictiy
     3) Power filiments
  */
+ struct Oven
+ {
+    // Maximum temperature
+    float maxTemp = 350.f;
+    // Number of trays
+    int numTrays = 3;
+    // Model ID
+    std::string modelID = "N465D887";
+    // Energy consumption rating
+    int energyRating = 3;
+    // Cost
+    float cost = 1200.f;
+
+    // Cook food
+    void cookFood(float temperature, float duration);
+    // Consume electrictiy
+    float consumeElectricty(int intensity);
+    // Power filiments
+    void powerFiliments(int noFiliments = 4);
+ };
 
 /*
 Thing 4) Music studio
@@ -190,6 +281,26 @@ Thing 4) Music studio
     2) Mix audio
     3) Master audio
  */
+ struct MusicStudio
+ {
+    // Number of microphones
+    int numMics = 8;
+    // Available instruments
+    std::string instruments = "Gibson Guitar";
+    // Available outboard equipment
+    std::string outboardEquipment = "Neve 1073";
+    // Number of engineers
+    int numEngineers = 3;
+    // Cost per hour
+    float coastPerHour = 350.f;
+
+    // Recording musicians
+    void recordMusicians(int numPlayers, float songDuration);
+    // Mix audio
+    void mixAudio(std::string audioID, float audioDuration, int numTracks);
+    // Master audio
+    void masterAudio(std::string audioID, float audioDuration);
+ };
 
 /*
 Thing 5) Wheels
@@ -204,6 +315,26 @@ Thing 5) Wheels
     2) release air
     3) adjust turning angle
  */
+ struct Wheel
+ {
+    // Tread depth
+    float tradDepth = 12.f;
+    // Maximum load
+    float maxLoad = 3450.f;
+    // Maximum pressure
+    float maxPressure = 35.f;
+    // Size
+    float size = 1.2f;
+    // Current air pressure
+    float currentPressure = 31.2f;
+    
+    // rotate
+    float roateWheel(float amount, bool forward = true);
+    // release air
+    void releaseAir(float pressureAmount);
+    // adjust turning angle
+    void turnWheel(float angle);
+ };
 
 /*
 Thing 6) Engine
@@ -218,6 +349,26 @@ Thing 6) Engine
     2) Combust fuel
     3) Propel vehicle
  */
+ struct Engine
+ {
+    // Number of cylinders
+    int noCylinders = 4;
+    // Oil level
+    float oilLevel = 80.5f;
+    // Coolant level
+    float collantLevel = 76.2f;
+    // Distance driven (kms)
+    float distanceDriven = 150000;
+    // Current RPM
+    float currentRPM = 2457.f;
+
+    // Fire pistons
+    void firePistons(int pistonNum);
+    // Combust fuel
+    void combustFuel(float fuelAmount);
+    // Propel vehicle
+    void propelVehicle(float distance, float speed);
+ };
 
 /*
 Thing 7) Trailer
@@ -233,6 +384,27 @@ Thing 7) Trailer
     3) Disconnect from vehicle
  */
 
+ struct Trailer
+ {    
+    // Objects held
+    std::string objectsHeld = "hay bails";
+    // Tray size
+    float traySize = 120.f;
+    // Number of wheels
+    int numWheels = 2;
+    // Maximum load (kg)
+    float maxLoad = 1200.f;
+    // Registration plate number
+    std::string registrationPlate = "EQ 1234";
+
+    // Hold objects
+    void holdObject(std::string object, int objectNum);
+    // Dump load
+    void dumpLoad(std::string objectsToDump);
+    // Disconnect from vehicle
+    void disconnect();
+ };
+
 /*
 Thing 8) Gear box
 5 properties:
@@ -246,6 +418,27 @@ Thing 8) Gear box
     2) Decrease torque
     3) Disengage gears (neutral)
  */
+
+ struct GearBox
+ {
+    // Number of gears
+    int numGears = 5;
+    // Current gear engaged
+    int currentGearEngaged = 3;
+    // Shaft rotation speed
+    float shaftRotationSpeed = 2300.f;
+    // Gear wear
+    float gearWear = 24.5f;
+    // Clutch pressure
+    float clutchPressue = 55.6f;
+
+    // Increase torque
+    float increaseTorque(float amount);
+    // Decrease torque
+    float decreaseTorque(float amount);
+    // Disengage gears (neutral)
+    void disengageGears();
+ };
 
 /*
 Thing 9) Headlights
@@ -261,6 +454,27 @@ Thing 9) Headlights
     3) Adjust beam angle
  */
 
+struct Headlight
+{
+    // Wattage
+    float wattage = 400.f;
+    // Beam angle
+    float beamAngle = 20.f;
+    // Houseing shape
+    std::string houseingShape = "round";
+    // Bulb type
+    std::string bulbType = "LED";
+    // Candela
+    float candela = 1200.f;
+
+    // Illuminate
+    float illuminate(float illuminationAmount, bool highBeams = false);
+    // Change intensity
+    float changeIntensity(float intenstityAmount);
+    // Adjust beam angle
+    float adjustBeamAngle(float newAngle);
+};
+
 /*
 Thing 10) Tractor
 5 properties:
@@ -274,6 +488,27 @@ Thing 10) Tractor
     2) Reverse
     3) Turn on lights
  */
+
+struct Tractor
+{
+    // Wheels
+    Wheel wheels;
+    // Engine
+    Engine engine;
+    // Trailer
+    Trailer trailer;
+    // Gear box
+    GearBox gearBox;
+    // Headlights
+    Headlight headlights;
+    
+    // Drive
+    void drive(Engine engine, GearBox gearBox);
+    // Reverse
+    void Reverse(Engine engine, GearBox gearBox);
+    // Turn on lights
+    void turnOnLights(Headlight headlights);
+};
 
 /*
  MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
