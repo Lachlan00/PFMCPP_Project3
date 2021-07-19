@@ -149,6 +149,7 @@ Thing 1) Hotel
     3) Valet service
  */
 
+FIXME: this entire class and nested class is indented incorrectly.
 struct Hotel
 {
   // Number of rooms
@@ -199,8 +200,9 @@ Thing 2) Printer
     3) Scan documents
  */
 
- struct Printer
- {
+
+ struct Printer FIXME: indentation
+ { FIXME: indentation
     // Ink levels
     float inkLevel = 75.f; 
     // Electrcity consumption rate
@@ -212,16 +214,16 @@ Thing 2) Printer
     // Brand name
     std::string brandName = "Canon";
 
-    struct PrintJob {
-      std::string documentFilename = "myDoc.doc";
-      int numCopies = 2;
-      int numPages = 12;
-      int resolution = 300;
-      std::string paperType = "A4";
+    struct PrintJob { FIXME curly braces go on their own line
+      std::string documentFilename = "myDoc.doc";FIXME: indentation
+      int numCopies = 2;FIXME: indentation
+      int numPages = 12;FIXME: indentation
+      int resolution = 300;FIXME: indentation
+      std::string paperType = "A4";FIXME: indentation
 
-      void cancelJob(std::string jobID);
-      std::string checkJobStatus(std::string jobID);
-      void addToQueue(std::string printerID, std::string proity = "low");
+      void cancelJob(std::string jobID);FIXME: indentation
+      std::string checkJobStatus(std::string jobID);FIXME: indentation
+      void addToQueue(std::string printerID, std::string proity = "low");FIXME: indentation
     };
 
     // Print documents
@@ -232,7 +234,7 @@ Thing 2) Printer
     void scanDocument(int resolution = 300);
 
     PrintJob printJob;
- };
+ };FIXME: indentation
 
 /*
 Thing 3) Oven
@@ -247,8 +249,8 @@ Thing 3) Oven
     2) Consume electrictiy
     3) Power filiments
  */
- struct Oven
- {
+ struct OvenFIXME: indentation
+ {FIXME: indentation
     // Maximum temperature
     float maxTemp = 350.f;
     // Number of trays
@@ -266,7 +268,7 @@ Thing 3) Oven
     float consumeElectricty(int intensity);
     // Power filiments
     void powerFiliments(int noFiliments = 4);
- };
+ };FIXME: indentation
 
 /*
 Thing 4) Music studio
@@ -281,8 +283,8 @@ Thing 4) Music studio
     2) Mix audio
     3) Master audio
  */
- struct MusicStudio
- {
+ struct MusicStudioFIXME: indentation
+ {FIXME: indentation
     // Number of microphones
     int numMics = 8;
     // Available instruments
@@ -315,8 +317,8 @@ Thing 5) Wheels
     2) release air
     3) adjust turning angle
  */
- struct Wheel
- {
+ struct WheelFIXME: indentation
+ {FIXME: indentation
     // Tread depth
     float tradDepth = 12.f;
     // Maximum load
@@ -334,7 +336,7 @@ Thing 5) Wheels
     void releaseAir(float pressureAmount);
     // adjust turning angle
     void turnWheel(float angle);
- };
+ };FIXME: indentation
 
 /*
 Thing 6) Engine
@@ -349,8 +351,8 @@ Thing 6) Engine
     2) Combust fuel
     3) Propel vehicle
  */
- struct Engine
- {
+ struct EngineFIXME: indentation
+ {FIXME: indentation
     // Number of cylinders
     int noCylinders = 4;
     // Oil level
@@ -368,7 +370,7 @@ Thing 6) Engine
     void combustFuel(float fuelAmount);
     // Propel vehicle
     void propelVehicle(float distance, float speed);
- };
+ };FIXME: indentation
 
 /*
 Thing 7) Trailer
@@ -384,8 +386,8 @@ Thing 7) Trailer
     3) Disconnect from vehicle
  */
 
- struct Trailer
- {    
+ struct TrailerFIXME: indentation
+ {    FIXME: indentation
     // Objects held
     std::string objectsHeld = "hay bails";
     // Tray size
@@ -403,7 +405,7 @@ Thing 7) Trailer
     void dumpLoad(std::string objectsToDump);
     // Disconnect from vehicle
     void disconnect();
- };
+ };FIXME: indentation
 
 /*
 Thing 8) Gear box
@@ -419,8 +421,8 @@ Thing 8) Gear box
     3) Disengage gears (neutral)
  */
 
- struct GearBox
- {
+ struct GearBoxFIXME: indentation
+ {FIXME: indentation
     // Number of gears
     int numGears = 5;
     // Current gear engaged
@@ -438,7 +440,7 @@ Thing 8) Gear box
     float decreaseTorque(float amount);
     // Disengage gears (neutral)
     void disengageGears();
- };
+ };FIXME: indentation
 
 /*
 Thing 9) Headlights
