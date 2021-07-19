@@ -194,11 +194,11 @@ Thing 4) Music studio
 /*
 Thing 5) Wheels
 5 properties:
-    1) tread depth
+    1) Tread depth
     2) Maximum load
     3) Maximum pressure
-    4) size
-    5) air pressure
+    4) Size
+    5) Current air pressure
 3 things it can do:
     1) rotate
     2) release air
