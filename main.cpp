@@ -429,7 +429,8 @@ void Engine::combustFuel(float fuelAmount)
     std::cout << fuelAmount << " fuel burnt";
 }
 
-void Engine::propelVehicle(float distance, float speed){
+void Engine::propelVehicle(float distance, float speed)
+{
     float fuelRequired = distance * speed * 2.345f;
     combustFuel(fuelRequired);
     
