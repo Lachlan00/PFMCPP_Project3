@@ -108,9 +108,52 @@ struct CarWash
     You'll need to insert the Person struct from the video in the space below.
  */
 
+struct Person
+{
+    int age;
+    int height;
+    float hairLength;
+    float GPA;
+    unsigned int SATScore;
+    int distanceTravelled;
 
+    struct Foot 
+    {
+        float legLength = 1.2f;
+        int numSteps = 0;
 
+        void stepForward()
+        {
+            numSteps += 1;
+        }
 
+        float stepSize()
+        {
+            return legLength;
+        }
+    };
+
+    Foot leftFoot;
+    Foot rightFoot;
+
+    void run(int howFast, bool startWithLeftFoot);
+};
+
+void Person::run(int howFast, bool startWithLeftFoot)
+{
+    if (startWithLeftFoot == true)
+    {
+        leftFoot.stepForward();
+        rightFoot.stepForward();
+    } 
+    else
+    {
+        rightFoot.stepForward();
+        leftFoot.stepForward();
+    }
+    distanceTravelled += leftFoot.stepSize() + rightFoot.stepSize();
+    std::cout << "Current speed is " << howFast << "mph." << std::endl;
+}
 
  /*
  2) provide implementations for the member functions you declared in your 10 user-defined types from the previous video outside of your UDT definitions.
@@ -122,21 +165,6 @@ struct CarWash
  3) be sure to write the correct full qualified name for the nested type's member functions.
  
  4) After you finish defining each type/function, click the [run] button.  Clear up any errors or warnings as best you can.
- */
-
-
-/*
-Thing 1) Hotel
-5 properties:
-    1) Number of rooms
-    2) Number of guests
-    3) Gross revenue
-    4) Overhead costs per anum
-    5) Number of employees
-3 things it can do:
-    1) Book in guests
-    2) Clean rooms
-    3) Valet service
  */
 
 struct Hotel
@@ -166,29 +194,32 @@ struct Hotel
     };
 
     // Book in guests
-    void bookGuests(Guest guest);
+    void bookGuests();
     // Clean rooms
     void cleanRoom(int roomNumber);
     // Valet service
-    void valetCar(Guest guest, int parkingSpot);
+    void valetCar(int parkingSpot);
 
-    Guest sally;
+    Guest guest;
 };
 
-/*
-Thing 2) Printer
-5 properties:
-    1) Ink levels 
-    2) Electrcity consumption rate
-    3) Paper level
-    4) Maximum resolution
-    5) Brand name
-3 things it can do:
-    1) Print documents
-    2) Load print jobs
-    3) Scan documents
- */
+void Hotel::bookGuests()
+{
+    float totalCost = guest.costPerNight * guest.lengthOfStay;
+    std::cout << "Total cost is: " << totalCost;
 
+}
+
+void Hotel::cleanRoom(int roomNumber)
+{
+    std::cout << "Hi, would you like room " << roomNumber <<"cleaned?";
+}
+
+void Hotel::valetCar(int parkingSpot)
+{
+    guest.costPerNight += 20.f;
+    std::cout << "Delier car to parking spot " << parkingSpot;
+}
 
 struct Printer
 {
@@ -217,7 +248,7 @@ struct Printer
     };
 
     // Print documents
-    void printDocument(PrintJob printJob);
+    void printDocument();
     // Load print jobs
     void loadJobs(int queueNumber);
     // Scan documents
@@ -226,19 +257,23 @@ struct Printer
     PrintJob printJob;
 };
 
-/*
-Thing 3) Oven
-5 properties:
-    1) Maximum temperature
-    2) Number of trays
-    3) Model ID
-    4) Energy consumption rating
-    5) Cost
-3 things it can do:
-    1) Cook food
-    2) Consume electrictiy
-    3) Power filiments
- */
+void Printer::printDocument()
+{
+    std::cout << "Printing " << printJob.numCopies << " Copies of document" << printJob.documentFilename;
+}
+
+void Printer::loadJobs(int queueNumber)
+{
+    if (queueNumber > 1)
+    {
+        queueNumber -= 1;
+    }
+}
+
+void scanDocument(int resolution = 300)
+{
+    std::cout << "Scanning document at " << resolution << " dpi.";
+}
  
 struct Oven
 {
@@ -256,24 +291,29 @@ struct Oven
     // Cook food
     void cookFood(float temperature, float duration);
     // Consume electrictiy
-    float consumeElectricty(int intensity);
+    float consumeElectricty(float intensity);
     // Power filiments
     void powerFiliments(int noFiliments = 4);
 };
 
-/*
-Thing 4) Music studio
-5 properties:
-    1) Number of microphones
-    2) Available instruments
-    3) Available outboard equipment
-    4) Number of engineers
-    5) Cost per hour
-3 things it can do:
-    1) Recording musicians
-    2) Mix audio
-    3) Master audio
- */
+void Oven::cookFood(float temperature, float duration)
+{
+    void powerFiliments();
+    float power = consumeElectricty(3.f / temperature);
+    std::cout << "Cooking for " << (duration / 60) << " minutes at" << power << " powrer";
+}
+
+float Oven::consumeElectricty(float intensity)
+{
+    float electrictyConsumed = intensity / energyRating;
+    return electrictyConsumed;
+}
+
+void Oven::powerFiliments(int noFiliments)
+{
+    std::cout << "Heating " << noFiliments << " filiments..";
+}
+
 struct MusicStudio
 {
     // Number of microphones
@@ -285,7 +325,7 @@ struct MusicStudio
     // Number of engineers
     int numEngineers = 3;
     // Cost per hour
-    float coastPerHour = 350.f;
+    float costPerHour = 350.f;
 
     // Recording musicians
     void recordMusicians(int numPlayers, float songDuration);
@@ -295,19 +335,26 @@ struct MusicStudio
     void masterAudio(std::string audioID, float audioDuration);
 };
 
-/*
-Thing 5) Wheels
-5 properties:
-    1) Tread depth
-    2) Maximum load
-    3) Maximum pressure
-    4) Size
-    5) Current air pressure
-3 things it can do:
-    1) rotate
-    2) release air
-    3) adjust turning angle
- */
+void MusicStudio::recordMusicians(int numPlayers, float songDuration)
+{
+    float recordedAudioDuration = songDuration*numPlayers;
+    std::cout << "Duration of audio recorded: " << recordedAudioDuration;
+}
+
+void MusicStudio::mixAudio(std::string audioID, float audioDuration, int numTracks)
+{
+    std::cout << "Mixing " << audioID;
+    float mixCost = audioDuration * numTracks * 0.45f;
+    std::cout << "Cost of mixdown: " << mixCost;
+}
+
+void MusicStudio::masterAudio(std::string audioID, float audioDuration)
+{
+    std::cout << "Mastering " << audioID;
+    float masterCost = audioDuration * 0.45f;
+    std::cout << "Cost of master: " << masterCost;
+}
+
 struct Wheel
 {
     // Tread depth
@@ -322,26 +369,35 @@ struct Wheel
     float currentPressure = 31.2f;
 
     // rotate
-    float roateWheel(float amount, bool forward = true);
+    void roateWheel(float amount, bool forward = true);
     // release air
     void releaseAir(float pressureAmount);
     // adjust turning angle
     void turnWheel(float angle);
 };
 
-/*
-Thing 6) Engine
-5 properties:
-    1) Number of cylinders
-    2) Oil level
-    3) Coolant level
-    4) Distance driven (kms)
-    5) Current RPM
-3 things it can do:
-    1) Fire pistons
-    2) Combust fuel
-    3) Propel vehicle
- */
+void Wheel::roateWheel(float amount, bool forward)
+{
+    std::string direction = "backward";
+
+    if (forward)
+    {
+        direction = "forward";
+    }
+
+    std::cout << "Moving " << direction << "by " << amount;
+}
+
+void Wheel::releaseAir(float pressureAmount)
+{
+    currentPressure -= pressureAmount;
+}
+
+void Wheel::turnWheel(float angle)
+{
+    std::cout << "Wheel turnign by " << angle << " radians ";
+}
+
 struct Engine
 {
     // Number of cylinders
@@ -363,24 +419,31 @@ struct Engine
     void propelVehicle(float distance, float speed);
 };
 
-/*
-Thing 7) Trailer
-5 properties:
-    1) Objects held
-    2) Tray size
-    3) Number of wheels
-    4) Maximum load (kg)
-    5) Registration plate number
-3 things it can do:
-    1) Hold objects
-    2) Dump load
-    3) Disconnect from vehicle
- */
+void Engine::firePistons(int pistonNum)
+{
+    std::cout << "Fire piston " << pistonNum;
+}
+
+void Engine::combustFuel(float fuelAmount)
+{
+    std::cout << fuelAmount << " fuel burnt";
+}
+
+void Engine::propelVehicle(float distance, float speed)
+{
+    float fuelRequired = distance * speed * 2.345f;
+    combustFuel(fuelRequired);
+    
+    for (int i = 0; i < noCylinders; i++) 
+    {
+        firePistons(i);
+    }
+}
 
 struct Trailer
 {
     // Objects held
-    std::string objectsHeld = "hay bails";
+    std::string objectsHeld = "2x hay bails";
     // Tray size
     float traySize = 120.f;
     // Number of wheels
@@ -393,24 +456,25 @@ struct Trailer
     // Hold objects
     void holdObject(std::string object, int objectNum);
     // Dump load
-    void dumpLoad(std::string objectsToDump);
+    void dumpLoad();
     // Disconnect from vehicle
     void disconnect();
 };
 
-/*
-Thing 8) Gear box
-5 properties:
-    1) Number of gears
-    2) Current gear engaged
-    3) Shaft rotation speed
-    4) Gear wear
-    5) Clutch pressure
-3 things it can do:
-    1) Increase torque
-    2) Decrease torque
-    3) Disengage gears (neutral)
- */
+void Trailer::holdObject(std::string object, int objectNum)
+{
+    objectsHeld = objectsHeld + ", " + std::to_string(objectNum) + "x " + object;
+}
+
+void Trailer::dumpLoad()
+{
+    objectsHeld = "";
+}
+
+void Trailer::disconnect()
+{
+    std::cout << "Traielr disconnected.";
+}
 
 struct GearBox
 {
@@ -426,26 +490,33 @@ struct GearBox
     float clutchPressue = 55.6f;
 
     // Increase torque
-    float increaseTorque(float amount);
+    void increaseTorque(float amount);
     // Decrease torque
-    float decreaseTorque(float amount);
+    void decreaseTorque(float amount);
     // Disengage gears (neutral)
     void disengageGears();
 };
 
-/*
-Thing 9) Headlights
-5 properties:
-    1) Wattage
-    2) Beam angle
-    3) Houseing shape
-    4) Bulb type
-    5) Candela
-3 things it can do:
-    1) Illuminate
-    2) Change intensity
-    3) Adjust beam angle
- */
+void GearBox::increaseTorque(float amount)
+{
+    if ((currentGearEngaged + amount) <= numGears)
+    {
+        currentGearEngaged += amount;
+    }
+}
+
+void GearBox::decreaseTorque(float amount)
+{
+    if (currentGearEngaged - amount >= 1)
+    {
+        currentGearEngaged -= amount;
+    }
+}
+
+void GearBox::disengageGears()
+{
+    currentGearEngaged = 0;
+}
 
 struct Headlight
 {
@@ -463,24 +534,32 @@ struct Headlight
     // Illuminate
     float illuminate(float illuminationAmount, bool highBeams = false);
     // Change intensity
-    float changeIntensity(float intenstityAmount);
+    void changeIntensity(float intenstityAmount);
     // Adjust beam angle
-    float adjustBeamAngle(float newAngle);
+    void adjustBeamAngle(float newAngle);
 };
 
-/*
-Thing 10) Tractor
-5 properties:
-    1) Wheels
-    2) Engine
-    3) Trailer
-    4) Gear box
-    5) Headlights
-3 things it can do:
-    1) Drive
-    2) Reverse
-    3) Turn on lights
- */
+float Headlight::illuminate(float illuminationAmount, bool highBeams)
+{
+    float illumination = illuminationAmount * 2;
+
+    if (highBeams)
+    {
+        illumination += 20;
+    }
+
+    return illumination;
+}
+
+void Headlight::changeIntensity(float intenstityAmount)
+{
+    wattage += intenstityAmount;
+}
+
+void Headlight::adjustBeamAngle(float newAngle)
+{
+    beamAngle += newAngle;
+} 
 
 struct Tractor
 {
@@ -496,12 +575,32 @@ struct Tractor
     Headlight headlights;
     
     // Drive
-    void drive(Engine engine, GearBox gearBox);
+    void drive(float distance, float speed);
     // Reverse
-    void Reverse(Engine engine, GearBox gearBox);
+    void reverse(float distance, float speed);
     // Turn on lights
-    void turnOnLights(Headlight headlights);
+    void turnOnLights(float initialIntensity);
 };
+
+void Tractor::drive(float distance, float speed)
+{
+    gearBox.increaseTorque(1);
+    engine.propelVehicle(distance, speed);
+}
+
+void Tractor::reverse(float distance, float speed)
+{
+    gearBox.decreaseTorque(1);
+    engine.propelVehicle(-distance, -speed);
+}
+
+void Tractor::turnOnLights(float initialIntensity)
+{
+    float illumination = headlights.illuminate(initialIntensity);
+    std::cout << "Illuminating lights by " << illumination;
+    // Change intensity
+    headlights.changeIntensity(illumination);
+}
 
 /*
  MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
