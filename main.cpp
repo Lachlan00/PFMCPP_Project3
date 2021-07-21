@@ -194,16 +194,16 @@ struct Hotel
     };
 
     // Book in guests
-    void bookGuests(Guest guest);
+    void bookGuests();
     // Clean rooms
     void cleanRoom(int roomNumber);
     // Valet service
-    void valetCar(Guest guest, int parkingSpot);
+    void valetCar(int parkingSpot);
 
-    Guest sally;
+    Guest guest;
 };
 
-void Hotel::bookGuests(Hotel::Guest guest)
+void Hotel::bookGuests()
 {
     float totalCost = guest.costPerNight * guest.lengthOfStay;
     std::cout << "Total cost is: " << totalCost;
@@ -215,7 +215,7 @@ void Hotel::cleanRoom(int roomNumber)
     std::cout << "Hi, would you like room " << roomNumber <<"cleaned?";
 }
 
-void Hotel::valetCar(Hotel::Guest guest, int parkingSpot)
+void Hotel::valetCar(int parkingSpot)
 {
     guest.costPerNight += 20.f;
     std::cout << "Delier car to parking spot " << parkingSpot;
@@ -248,16 +248,16 @@ struct Printer
     };
 
     // Print documents
-    void printDocument(PrintJob printJob);
+    void printDocument();
     // Load print jobs
     void loadJobs(int queueNumber);
     // Scan documents
     void scanDocument(int resolution = 300);
 
-    PrintJob currentPrintJob;
+    PrintJob printJob;
 };
 
-void Printer::printDocument(Printer::PrintJob printJob)
+void Printer::printDocument()
 {
     std::cout << "Printing " << printJob.numCopies << " Copies of document" << printJob.documentFilename;
 }
@@ -575,31 +575,31 @@ struct Tractor
     Headlight headlights;
     
     // Drive
-    void drive(Engine engine, GearBox gearBox);
+    void drive(float distance, float speed);
     // Reverse
-    void Reverse(Engine engine, GearBox gearBox);
+    void Reverse(float distance, float speed);
     // Turn on lights
-    void turnOnLights(Headlight headlights);
+    void turnOnLights(float initialIntensity);
 };
 
-void Tractor::drive(Engine engineA, GearBox gearBoxA)
+void Tractor::drive(float distance, float speed)
 {
-    gearBoxA.increaseTorque(1);
-    engineA.propelVehicle(100, 30);
+    gearBox.increaseTorque(1);
+    engine.propelVehicle(distance, speed);
 }
 
-void Tractor::Reverse(Engine engineA, GearBox gearBoxA)
+void Tractor::Reverse(float distance, float speed)
 {
-    gearBoxA.decreaseTorque(1);
-    engineA.propelVehicle(-100, -30);
+    gearBox.decreaseTorque(1);
+    engine.propelVehicle(-distance, -speed);
 }
 
-void Tractor::turnOnLights(Headlight headlightsA)
+void Tractor::turnOnLights(float initialIntensity)
 {
-    float illumination = headlightsA.illuminate(20);
+    float illumination = headlights.illuminate(initialIntensity);
     std::cout << "Illuminating lights by " << illumination;
     // Change intensity
-    headlightsA.changeIntensity(illumination);
+    headlights.changeIntensity(illumination);
 }
 
 /*
