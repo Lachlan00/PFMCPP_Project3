@@ -577,7 +577,7 @@ struct Tractor
     // Drive
     void drive(float distance, float speed);
     // Reverse
-    void Reverse(float distance, float speed);
+    void reverse(float distance, float speed);
     // Turn on lights
     void turnOnLights(float initialIntensity);
 };
@@ -588,7 +588,7 @@ void Tractor::drive(float distance, float speed)
     engine.propelVehicle(distance, speed);
 }
 
-void Tractor::Reverse(float distance, float speed)
+void Tractor::reverse(float distance, float speed)
 {
     gearBox.decreaseTorque(1);
     engine.propelVehicle(-distance, -speed);
