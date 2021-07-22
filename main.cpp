@@ -151,7 +151,7 @@ inkLevel(75.f),
 electrictyConsumption(140.f),
 brandName("Canon")
 {
-    
+
 }
 
 void Printer::printDocument()
@@ -477,7 +477,7 @@ struct Tractor
 
 Tractor::Tractor()
 {
-    std::cout << "Tractor willed into existance!" << std::endl;
+    std::cout << "Tractor willed into existence!" << std::endl;
 }
 
 void Tractor::drive(float distance, float speed)
