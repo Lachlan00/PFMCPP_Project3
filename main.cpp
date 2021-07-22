@@ -144,13 +144,14 @@ struct Printer
     PrintJob printJob;
 };
 
-Printer::Printer()
+Printer::Printer() :
+paperLevel(124),
+maxRes(300),
+inkLevel(75.f),
+electrictyConsumption(140.f),
+brandName("Canon")
 {
-    paperLevel = 124;
-    maxRes = 300;
-    inkLevel = 75.f; 
-    electrictyConsumption = 140.f;
-    brandName = "Canon";
+    
 }
 
 void Printer::printDocument()
@@ -467,11 +468,17 @@ struct Tractor
     Trailer trailer;
     GearBox gearBox;
     Headlight headlights;
+    Tractor();
     
     void drive(float distance, float speed);
     void reverse(float distance, float speed);
     void turnOnLights(float initialIntensity);
 };
+
+Tractor::Tractor()
+{
+    std::cout << "Tractor willed into existance!" << std::endl;
+}
 
 void Tractor::drive(float distance, float speed)
 {
