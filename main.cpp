@@ -90,14 +90,13 @@ struct Hotel
     Guest guest;
 };
 
-Hotel::Hotel()
-{
-    numRooms = 85;
-    numGuests = 65;
-    numEmployees = 20;
-    grossRevenue = 300000.f;
-    overheads = 80000.f;
-}
+Hotel::Hotel() :
+numRooms(85),
+numGuests(65),
+numEmployees(20),
+grossRevenue(300000.f),
+overheads(80000.f)
+{}
 
 void Hotel::bookGuests()
 {
@@ -150,9 +149,7 @@ maxRes(300),
 inkLevel(75.f),
 electrictyConsumption(140.f),
 brandName("Canon")
-{
-
-}
+{}
 
 void Printer::printDocument()
 {
@@ -184,14 +181,13 @@ struct Oven
     void powerFiliments(int noFiliments = 4);
 };
 
-Oven::Oven()
-{
-    numTrays = 3;
-    energyRating = 3;
-    maxTemp = 350.f;
-    cost = 1200.f;
-    modelID = "N465D887";
-}
+Oven::Oven() :
+numTrays(3),
+energyRating(3),
+maxTemp(350.f),
+cost(1200.f),
+modelID("N465D887")
+{}
 
 void Oven::cookFood(float temperature, float duration)
 {
@@ -224,14 +220,13 @@ struct MusicStudio
     void masterAudio(std::string audioID, float audioDuration);
 };
 
-MusicStudio::MusicStudio()
-{
-    numMics = 8;
-    numEngineers = 3;
-    costPerHour = 350.f;
-    instruments = "Gibson Guitar";
-    outboardEquipment = "Neve 1073";
-}
+MusicStudio::MusicStudio() :
+numMics(8),
+numEngineers(3),
+costPerHour(350.f),
+instruments("Gibson Guitar"),
+outboardEquipment("Neve 1073")
+{}
 
 void MusicStudio::recordMusicians(int numPlayers, float songDuration)
 {
@@ -263,14 +258,13 @@ struct Wheel
     void turnWheel(float angle);
 };
 
-Wheel::Wheel()
-{
-    tradDepth = 12.f;
-    maxLoad = 3450.f;
-    maxPressure = 35.f;
-    size = 1.2f;
-    currentPressure = 31.2f;
-}
+Wheel::Wheel() :
+tradDepth(12.f),
+maxLoad(3450.f),
+maxPressure(35.f),
+size(1.2f),
+currentPressure(31.2f)
+{}
 
 void Wheel::roateWheel(float amount, bool forward)
 {
@@ -305,14 +299,13 @@ struct Engine
     void propelVehicle(float distance, float speed);
 };
 
-Engine::Engine()
-{
-    noCylinders = 4;
-    oilLevel = 80.5f;
-    collantLevel = 76.2f;
-    distanceDriven = 150000;
-    currentRPM = 2457.f;
-}
+Engine::Engine() :
+noCylinders(4),
+oilLevel(80.5f),
+collantLevel(76.2f),
+distanceDriven(150000),
+currentRPM(2457.f)
+{}
 
 void Engine::firePistons(int pistonNum)
 {
@@ -347,14 +340,13 @@ struct Trailer
     void disconnect();
 };
 
-Trailer::Trailer()
-{
-    numWheels = 2;
-    traySize = 120.f;
-    maxLoad = 1200.f;
-    objectsHeld = "2x hay bails";
-    registrationPlate = "EQ 1234";
-}
+Trailer::Trailer() :
+numWheels(2),
+traySize(120.f),
+maxLoad(1200.f),
+objectsHeld("2x hay bails"),
+registrationPlate("EQ 1234")
+{}
 
 void Trailer::holdObject(std::string object, int objectNum)
 {
@@ -389,14 +381,13 @@ struct GearBox
     void disengageGears();
 };
 
-GearBox::GearBox()
-{
-    numGears = 5;
-    currentGearEngaged = 3;
-    shaftRotationSpeed = 2300.f;
-    gearWear = 24.5f;
-    clutchPressue = 55.6f;
-}
+GearBox::GearBox() :
+numGears(5),
+currentGearEngaged(3),
+shaftRotationSpeed(2300.f),
+gearWear(24.5f),
+clutchPressue(55.6f)
+{}
 
 void GearBox::increaseTorque(float amount)
 {
@@ -430,14 +421,13 @@ struct Headlight
     void adjustBeamAngle(float newAngle);
 };
 
-Headlight::Headlight()
-{
-    wattage = 400.f;
-    beamAngle = 20.f;
-    candela = 1200.f;
-    houseingShape = "round";
-    bulbType = "LED";
-}
+Headlight::Headlight() :
+wattage(400.f),
+beamAngle(20.f),
+candela(1200.f),
+houseingShape("round"),
+bulbType("LED")
+{}
 
 float Headlight::illuminate(float illuminationAmount, bool highBeams)
 {
