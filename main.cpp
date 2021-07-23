@@ -83,6 +83,7 @@ void Hotel::bookGuests()
 {
     float totalCost = guest.costPerNight * guest.lengthOfStay;
     std::cout << "Total cost is: $" << totalCost << std::endl;
+    std::cout << "I hope you enjoy staying in our Hotel! Please let usk know if your room is not to your liking! We currently have " << numRooms - numGuests << " available." << std::endl;
 
 }
 
@@ -141,6 +142,8 @@ paperType("A4")
 void Printer::printDocument()
 {
     std::cout << "Printing " << printJob.numCopies << " Copies of document " << printJob.documentFilename << std::endl;
+    std::cout << "Current ink level: " << inkLevel << std::endl;
+    std::cout << "Current paper level: "  << paperLevel << std::endl;
 }
 
 void Printer::loadJobs(int queueNumber)
@@ -154,6 +157,7 @@ void Printer::loadJobs(int queueNumber)
 void Printer::scanDocument(int resolution)
 {
     std::cout << "Scanning document at " << resolution << " dpi." << std::endl;
+    std::cout << "Max resolution is " << maxRes << " dpi." << std::endl;
 }
  
 struct Oven
@@ -181,6 +185,7 @@ void Oven::cookFood(float temperature, float duration)
     void powerFiliments();
     float power = consumeElectricty(3.f / temperature);
     std::cout << "Cooking for " << (duration / 60) << " minutes at " << power << " power" << std::endl;
+    std::cout << "Enjoy using this Oven! Model ID: " << modelID << std::endl;
 }
 
 float Oven::consumeElectricty(float intensity)
@@ -192,6 +197,7 @@ float Oven::consumeElectricty(float intensity)
 void Oven::powerFiliments(int noFiliments)
 {
     std::cout << "Heating " << noFiliments << " filiments.." << std::endl;
+    std::cout << "Maximum temperature is " << maxTemp << " degrees celcius." << std::endl;
 }
 
 struct MusicStudio
@@ -219,20 +225,22 @@ void MusicStudio::recordMusicians(int numPlayers, float songDuration)
 {
     float recordedAudioDuration = songDuration*numPlayers;
     std::cout << "Duration of audio recorded: " << recordedAudioDuration << std::endl;
+    std::cout << "Cost per hour is: $" << costPerHour << std::endl;
 }
 
 void MusicStudio::mixAudio(std::string audioID, float audioDuration, int numTracks)
 {
     std::cout << "Mixing " << audioID;
     float mixCost = audioDuration * numTracks * 0.45f;
-    std::cout << "! Cost of mixdown: " << mixCost << std::endl;
+    std::cout << "! Cost of mixdown: $" << mixCost << std::endl;
 }
 
 void MusicStudio::masterAudio(std::string audioID, float audioDuration)
 {
     std::cout << "Mastering " << audioID;
     float masterCost = audioDuration * 0.45f;
-    std::cout << "! Cost of master: " << masterCost << std::endl;
+    std::cout << "! Cost of master: $" << masterCost << std::endl;
+    std::cout << "We added some sweet harmonics to your tracks using the " << outboardEquipment << "!" << std::endl;
 }
 
 struct Wheel
@@ -268,11 +276,14 @@ void Wheel::roateWheel(float amount, bool forward)
 void Wheel::releaseAir(float pressureAmount)
 {
     currentPressure -= pressureAmount;
+    std::cout << pressureAmount << " PSI of air released!" << std::endl;
+    std::cout << "Max pressure: " << maxPressure << " psi" << std::endl;
 }
 
 void Wheel::turnWheel(float angle)
 {
     std::cout << "Wheel turnign by " << angle << " radians" << std::endl;
+    std::cout << "The wheel has " << tradDepth << " mm left of tread." << std::endl;
 }
 
 struct Engine
@@ -296,18 +307,20 @@ currentRPM(2457.f)
 
 void Engine::firePistons(int pistonNum)
 {
-    std::cout << "Fire piston " << pistonNum << std::endl;
+    std::cout << "Fire piston " << pistonNum + 1 << std::endl;
 }
 
 void Engine::combustFuel(float fuelAmount)
 {
     std::cout << fuelAmount << " fuel burnt" << std::endl;
+    std::cout << "Current oil livel: " << oilLevel << std::endl;
 }
 
 void Engine::propelVehicle(float distance, float speed)
 {
     float fuelRequired = distance * speed * 2.345f;
     combustFuel(fuelRequired);
+    std::cout << "This engine has " << noCylinders << " cylinders. Fire the pistons!" << std::endl;
     
     for (int i = 0; i < noCylinders; i++) 
     {
@@ -355,6 +368,7 @@ void Trailer::dumpLoad()
 void Trailer::disconnect()
 {
     std::cout << "Trailer disconnected." << std::endl;
+    std::cout << "Registration plate is: " << registrationPlate << std::endl;
 }
 
 struct GearBox
@@ -522,11 +536,6 @@ int main()
 
     std::cout << std::endl;
 
-    Engine engine;
-    engine.propelVehicle(100.f, 40.f);
-    
-    std::cout << std::endl;
-
     Wheel frontRightWheel;
     Wheel backLeftWheel;
     frontRightWheel.roateWheel(360.f);
@@ -537,6 +546,11 @@ int main()
     backLeftWheel.releaseAir(7.2f);
     std::cout << "Wheel pressure: " << backLeftWheel.currentPressure << std::endl;
     backLeftWheel.turnWheel(20.f);
+
+    std::cout << std::endl;
+
+    Engine engine;
+    engine.propelVehicle(100.f, 40.f);
 
     std::cout << std::endl;
 
