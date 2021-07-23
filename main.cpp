@@ -72,11 +72,10 @@ struct Hotel
 
     struct Guest
     {
-        std::string name = "Sally";
-        int age = 34;
-        int lengthOfStay = 4;
-        int roomNumber = 67;
-        float costPerNight = 120.f;
+        int age, lengthOfStay, roomNumber;
+        float costPerNight;
+        std::string name;
+        Guest();
 
         float chargeGuest(float amount);
         void callRoom(int roomNumber);
@@ -96,6 +95,14 @@ numGuests(65),
 numEmployees(20),
 grossRevenue(300000.f),
 overheads(80000.f)
+{}
+
+Hotel::Guest::Guest() :
+age(34),
+lengthOfStay(4),
+roomNumber(67),
+costPerNight(120.f),
+name("Sally")
 {}
 
 void Hotel::bookGuests()
@@ -125,11 +132,9 @@ struct Printer
 
     struct PrintJob 
     {
-        std::string documentFilename = "myDoc.doc";
-        int numCopies = 2;
-        int numPages = 12;
-        int resolution = 300;
-        std::string paperType = "A4";
+        int numCopies, numPages, resolution;
+        std::string documentFilename, paperType;
+        PrintJob();
 
         void cancelJob(std::string jobID);
         std::string checkJobStatus(std::string jobID);
@@ -149,6 +154,14 @@ maxRes(300),
 inkLevel(75.f),
 electrictyConsumption(140.f),
 brandName("Canon")
+{}
+
+Printer::PrintJob::PrintJob() :
+numCopies(2),
+numPages(12),
+resolution(300),
+documentFilename("myDoc.doc"),
+paperType("A4")
 {}
 
 void Printer::printDocument()
