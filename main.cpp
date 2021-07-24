@@ -629,7 +629,7 @@ void Headlight::lightBeamWeapon(float beamPower)
     for (float power = 1; power <= beamPower; power++)
     {
         prog = (power/beamPower) * progBarMaxLength;
-        std::cout << "Charging [" << std::string(static_cast<unsigned long>(floor(prog)), '=') << std::string(static_cast<unsigned long>(ceil(progBarMaxLength - prog)), ' ') << "] " << round((power/beamPower)*100) << "%\r" << std::flush;
+        std::cout << "Charging [" << round((power/beamPower)*100) << "%]\r" << std::flush;
     }
     std::cout << std::endl << std::endl << "FIRE!!!!" << std::endl << std::endl;
 }
