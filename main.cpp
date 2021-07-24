@@ -63,10 +63,7 @@ int main()
 }
 
 //call Example::main() in main()
-
-
-
-
+#include <math.h> //for rounding
 
 struct Hotel
 {
@@ -89,6 +86,7 @@ struct Hotel
     void bookGuests();
     void cleanRoom(int roomNumber);
     void valetCar(int parkingSpot);
+    void layOffEmployees(int numFired);
 
     Guest guest;
 };
@@ -128,6 +126,18 @@ void Hotel::valetCar(int parkingSpot)
     std::cout << "Deliver car to parking spot " << parkingSpot << std::endl;
 }
 
+void Hotel::layOffEmployees(int numFired)
+{
+    if (grossRevenue < overheads)
+    {
+        std::cout << "Times are tough.." << std::endl;
+        for (int i = 0; i < numFired; i++)
+        {
+            std::cout << "Employee " << i + 1 << " fired.." << std::endl;
+        }
+    }
+}
+
 struct Printer
 {
     int paperLevel, maxRes;
@@ -149,6 +159,7 @@ struct Printer
     void printDocument();
     void loadJobs(int queueNumber);
     void scanDocument(int resolution = 300);
+    void printCopies(int noCopies);
 
     PrintJob printJob;
 };
@@ -189,6 +200,22 @@ void Printer::scanDocument(int resolution)
     std::cout << "Scanning document at " << resolution << " dpi." << std::endl;
     std::cout << "Max resolution is " << maxRes << " dpi." << std::endl;
 }
+
+void Printer::printCopies(int noCopies)
+{
+    printJob.numCopies = noCopies;
+    printDocument();
+    for (int i = 0; i < noCopies; i++)
+    {
+        if (paperLevel == 0)
+        {
+            std::cout << "Error: no paper!" << std::endl;
+            break;
+        }
+        std::cout << "Printing copy " << i + 1 << ".." << std::endl;
+        paperLevel -= 1;
+    }
+}
  
 struct Oven
 {
@@ -200,6 +227,7 @@ struct Oven
     void cookFood(float temperature, float duration);
     float consumeElectricty(float intensity);
     void powerFiliments(int noFiliments = 4);
+    void turnOffFiliments(int noFiliments = 4);
 };
 
 Oven::Oven() :
@@ -230,6 +258,16 @@ void Oven::powerFiliments(int noFiliments)
     std::cout << "Maximum temperature is " << maxTemp << " degrees celcius." << std::endl;
 }
 
+void Oven::turnOffFiliments(int noFiliments)
+{
+    int i = 0;
+    while (i < noFiliments)
+    {
+        std::cout << "Shutting off filiment " << i + 1 << std::endl;
+        i ++;
+    }
+}
+
 struct MusicStudio
 {
     int numMics, numEngineers;
@@ -241,6 +279,7 @@ struct MusicStudio
     void recordMusicians(int numPlayers, float songDuration);
     void mixAudio(std::string audioID, float audioDuration, int numTracks);
     void masterAudio(std::string audioID, float audioDuration);
+    void payEngineers();
 };
 
 MusicStudio::MusicStudio() :
@@ -273,6 +312,16 @@ void MusicStudio::masterAudio(std::string audioID, float audioDuration)
     std::cout << "We added some sweet harmonics to your tracks using the " << outboardEquipment << "!" << std::endl;
 }
 
+void MusicStudio::payEngineers()
+{
+    int i = 0;
+    while (i < numEngineers)
+    {
+        std::cout << "Engineer " << i + 1 << " paid $" << costPerHour/2 << std::endl;
+        i ++;
+    }
+}
+
 struct Wheel
 {
     float tradDepth, maxLoad, maxPressure, size, currentPressure;
@@ -281,6 +330,7 @@ struct Wheel
     void roateWheel(float amount, bool forward = true);
     void releaseAir(float pressureAmount);
     void turnWheel(float angle);
+    void maximisePressure(float pressureIncrement = 2);
 };
 
 Wheel::Wheel() :
@@ -316,6 +366,22 @@ void Wheel::turnWheel(float angle)
     std::cout << "The wheel has " << tradDepth << " mm left of tread." << std::endl;
 }
 
+void Wheel::maximisePressure(float pressureIncrement)
+{
+    while (currentPressure < maxPressure)
+    {
+        std::cout << "Adding " << pressureIncrement << " psi.." << std::endl;
+        currentPressure += pressureIncrement;
+        std::cout << "Current pressure is " << currentPressure << std::endl;
+    }
+    
+    if (currentPressure > maxPressure)
+    {
+        std::cout << "WARNING! Too much pressure. Releasing air.." << std::endl;
+        releaseAir(currentPressure - maxPressure);
+    }
+}
+
 struct Engine
 {
     int noCylinders;
@@ -325,11 +391,12 @@ struct Engine
     void firePistons(int pistonNum);
     void combustFuel(float fuelAmount);
     void propelVehicle(float distance, float speed);
+    void adjustOil(float desiredLevel);
 };
 
 Engine::Engine() :
 noCylinders(4),
-oilLevel(80.5f),
+oilLevel(80.f),
 collantLevel(76.2f),
 distanceDriven(150000),
 currentRPM(2457.f)
@@ -358,6 +425,28 @@ void Engine::propelVehicle(float distance, float speed)
     }
 }
 
+void Engine::adjustOil(float desiredLevel)
+{
+    std::cout << "Oil level: " << oilLevel << std::endl;
+    std::cout << (desiredLevel >= oilLevel ? "Adding ":"Removing") << " oil" << std::endl;
+    if (desiredLevel > 100.f)
+    {
+        desiredLevel = 100.f;
+    }
+
+    while (oilLevel < desiredLevel)
+    {
+        oilLevel += 5;
+        std::cout << "Adding oil.. current level: " << oilLevel << std::endl; 
+    }
+
+    while (oilLevel > desiredLevel)
+    {
+        oilLevel -= 5;
+        std::cout << "Removing oil.. current level: " << oilLevel << std::endl; 
+    }
+}
+
 struct Trailer
 {
     int numWheels;
@@ -368,6 +457,7 @@ struct Trailer
     void holdObject(std::string object, int objectNum);
     void dumpLoad();
     void disconnect();
+    void takeOffWheels();
 };
 
 Trailer::Trailer() :
@@ -401,6 +491,15 @@ void Trailer::disconnect()
     std::cout << "Registration plate is: " << registrationPlate << std::endl;
 }
 
+void Trailer::takeOffWheels()
+{
+    std::cout << "Removing wheels!" << std::endl;
+    for (int i = 0; i < numWheels; i++)
+    {
+        std::cout << "Wheel " << i+1 << " removed.." << std::endl;
+    }
+}
+
 struct GearBox
 {
     int numGears, currentGearEngaged;
@@ -410,6 +509,7 @@ struct GearBox
     void increaseTorque(float amount);
     void decreaseTorque(float amount);
     void disengageGears();
+    void shiftGears(int targetGear);
 };
 
 GearBox::GearBox() :
@@ -441,8 +541,36 @@ void GearBox::disengageGears()
     currentGearEngaged = 0;
 }
 
+void GearBox::shiftGears(int targetGear)
+{
+    if (targetGear > numGears)
+    {
+        targetGear = numGears;
+    }
+    else if (targetGear < 0)
+    {
+        targetGear = 0;
+    }
+    while (currentGearEngaged != targetGear)
+    {
+        if (currentGearEngaged < targetGear)
+        {
+            std::cout << "Shifting up!" << std::endl;
+            currentGearEngaged += 1;
+            std::cout << "Current gear: " << currentGearEngaged << std::endl;
+        } 
+        else
+        {
+            std::cout << "Shifting down!" << std::endl;
+            currentGearEngaged -= 1;
+            std::cout << "Current gear: " << currentGearEngaged << std::endl;
+        } 
+    }
+}
+
 struct Headlight
 {
+    int maxBeamPower;
     float wattage, beamAngle, candela;
     std::string houseingShape, bulbType;
     Headlight();
@@ -450,9 +578,11 @@ struct Headlight
     float illuminate(float illuminationAmount, bool highBeams = false);
     void changeIntensity(float intenstityAmount);
     void adjustBeamAngle(float newAngle);
+    void lightBeamWeapon(float beamPower);
 };
 
 Headlight::Headlight() :
+maxBeamPower(9000),
 wattage(400.f),
 beamAngle(20.f),
 candela(1200.f),
@@ -480,7 +610,29 @@ void Headlight::changeIntensity(float intenstityAmount)
 void Headlight::adjustBeamAngle(float newAngle)
 {
     beamAngle += newAngle;
-} 
+}
+
+void Headlight::lightBeamWeapon(float beamPower)
+{   
+    float progBarMaxLength = 50;
+    float prog = 0;
+    if (beamPower > maxBeamPower)
+    {
+        beamPower = maxBeamPower;
+    }
+    else if (beamPower <= 0)
+    {
+        beamPower = 1;
+    }
+    std::cout << "Charging light beam to " << beamPower <<"! Full power is " << maxBeamPower << " watts!" << std::endl;
+
+    for (float power = 1; power <= beamPower; power++)
+    {
+        prog = (power/beamPower) * progBarMaxLength;
+        std::cout << "Charging [" << std::string(static_cast<unsigned long>(floor(prog)), '=') << std::string(static_cast<unsigned long>(ceil(progBarMaxLength - prog)), ' ') << "] " << round((power/beamPower)*100) << "%\r" << std::flush;
+    }
+    std::cout << std::endl << std::endl << "FIRE!!!!" << std::endl << std::endl;
+}
 
 struct Tractor
 {
@@ -537,25 +689,32 @@ void Tractor::turnOnLights(float initialIntensity)
 #include <iostream>
 int main()
 {
-    Example::main();
+    //Example::main();
     std::cout << std::endl;
 
     Hotel hotel;
     hotel.bookGuests();
     hotel.cleanRoom(12);
     hotel.valetCar(27);
+    hotel.layOffEmployees(5);
+    hotel.grossRevenue = 20000;
+    hotel.layOffEmployees(5);
 
     std::cout << std::endl;
 
     Printer printer;
     printer.printDocument();
     printer.scanDocument(72);
+    printer.printCopies(3);
+    printer.paperLevel = 2;
+    printer.printCopies(7);
 
     std::cout << std::endl;
 
     Oven oven;
-    oven.cookFood(180.f, 1200.f);
     oven.powerFiliments();
+    oven.cookFood(180.f, 1200.f);
+    oven.turnOffFiliments(4);
 
     std::cout << std::endl;
 
@@ -563,6 +722,7 @@ int main()
     musicStudio.recordMusicians(5, 185.f);
     musicStudio.mixAudio("Greatest Song", 185.f, 7);
     musicStudio.masterAudio("Greatest Song", 185.f);
+    musicStudio.payEngineers();
 
     std::cout << std::endl;
 
@@ -576,11 +736,15 @@ int main()
     backLeftWheel.releaseAir(7.2f);
     std::cout << "Wheel pressure: " << backLeftWheel.currentPressure << std::endl;
     backLeftWheel.turnWheel(20.f);
+    backLeftWheel.maximisePressure();
+    frontRightWheel.maximisePressure();
 
     std::cout << std::endl;
 
     Engine engine;
     engine.propelVehicle(100.f, 40.f);
+    engine.adjustOil(50.f);
+    engine.adjustOil(75.f);
 
     std::cout << std::endl;
 
@@ -593,6 +757,7 @@ int main()
     trailer.dumpLoad();
     std::cout << "Trailer holds " << (trailer.objectsHeld == "" ? "Nothing!" : trailer.objectsHeld) << std::endl;
     trailer.disconnect();
+    trailer.takeOffWheels();
 
     std::cout << std::endl;
 
@@ -602,6 +767,8 @@ int main()
     std::cout << "Current gear engaged: " << gearBox.currentGearEngaged << std::endl;
     gearBox.disengageGears();
     std::cout << "Current gear engaged: " << gearBox.currentGearEngaged << std::endl;
+    gearBox.shiftGears(5);
+    gearBox.shiftGears(3);
 
     std::cout << std::endl;
 
@@ -609,8 +776,8 @@ int main()
     tractor.drive(120, 40);
     tractor.reverse(50, 10);
     tractor.turnOnLights(20);
-
     std::cout << std::endl;
+    tractor.headlights.lightBeamWeapon(9000);
 
     std::cout << "good to go!" << std::endl;
 }
