@@ -261,7 +261,7 @@ void Oven::powerFiliments(int noFiliments)
 void Oven::turnOffFiliments(int noFiliments)
 {
     int i = 0;
-    while (i <= noFiliments)
+    while (i < noFiliments)
     {
         i ++;
         std::cout << "Shutting off filiment " << i << std::endl;
