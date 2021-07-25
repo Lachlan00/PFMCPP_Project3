@@ -131,6 +131,7 @@ void Hotel::layOffEmployees(int numFired)
     if (grossRevenue < overheads)
     {
         std::cout << "Times are tough.." << std::endl;
+        
         for (int i = 0; i < numFired; ++i)
         {
             std::cout << "Employee " << i + 1 << " fired.." << std::endl;
@@ -212,6 +213,7 @@ void Printer::printCopies(int noCopies)
             std::cout << "Error: no paper!" << std::endl;
             break;
         }
+        
         std::cout << "Printing copy " << i + 1 << ".." << std::endl;
         paperLevel -= 1;
     }
@@ -261,6 +263,7 @@ void Oven::powerFiliments(int noFiliments)
 void Oven::turnOffFiliments(int noFiliments)
 {
     int i = 0;
+    
     while (i < noFiliments)
     {
         std::cout << "Shutting off filiment " << i + 1 << std::endl;
@@ -315,6 +318,7 @@ void MusicStudio::masterAudio(std::string audioID, float audioDuration)
 void MusicStudio::payEngineers()
 {
     int i = 0;
+    
     while (i < numEngineers)
     {
         std::cout << "Engineer " << i + 1 << " paid $" << costPerHour/2 << std::endl;
@@ -429,6 +433,7 @@ void Engine::adjustOil(float desiredLevel)
 {
     std::cout << "Oil level: " << oilLevel << std::endl;
     std::cout << (desiredLevel >= oilLevel ? "Adding ":"Removing") << " oil" << std::endl;
+    
     if (desiredLevel > 100.f)
     {
         desiredLevel = 100.f;
@@ -494,6 +499,7 @@ void Trailer::disconnect()
 void Trailer::takeOffWheels()
 {
     std::cout << "Removing wheels!" << std::endl;
+    
     for (int i = 0; i < numWheels; ++i)
     {
         std::cout << "Wheel " << i+1 << " removed.." << std::endl;
@@ -551,6 +557,7 @@ void GearBox::shiftGears(int targetGear)
     {
         targetGear = 0;
     }
+    
     while (currentGearEngaged != targetGear)
     {
         if (currentGearEngaged < targetGear)
@@ -616,6 +623,7 @@ void Headlight::lightBeamWeapon(float beamPower)
 {   
     float progBarMaxLength = 50;
     float prog = 0;
+    
     if (beamPower > maxBeamPower)
     {
         beamPower = maxBeamPower;
@@ -624,6 +632,7 @@ void Headlight::lightBeamWeapon(float beamPower)
     {
         beamPower = 1;
     }
+    
     std::cout << "Charging light beam to " << beamPower <<"! Full power is " << maxBeamPower << " watts!" << std::endl;
 
     for (float power = 1; power <= beamPower; power++)
@@ -631,6 +640,7 @@ void Headlight::lightBeamWeapon(float beamPower)
         prog = (power/beamPower) * progBarMaxLength;
         std::cout << "Charging [" << round((power/beamPower)*100) << "%]\r" << std::flush;
     }
+    
     std::cout << std::endl << std::endl << "FIRE!!!!" << std::endl << std::endl;
 }
 
