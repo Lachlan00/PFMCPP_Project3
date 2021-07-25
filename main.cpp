@@ -263,9 +263,8 @@ void Oven::turnOffFiliments(int noFiliments)
     int i = 0;
     while (i < noFiliments)
     {
-        i ++;
-        std::cout << "Shutting off filiment " << i << std::endl;
-
+        std::cout << "Shutting off filiment " << i + 1 << std::endl;
+        ++i;
     }
 }
 
@@ -316,10 +315,10 @@ void MusicStudio::masterAudio(std::string audioID, float audioDuration)
 void MusicStudio::payEngineers()
 {
     int i = 0;
-    while (i <= numEngineers)
+    while (i < numEngineers)
     {
-        i ++;
-        std::cout << "Engineer " << i << " paid $" << costPerHour/2 << std::endl;
+        std::cout << "Engineer " << i + 1 << " paid $" << costPerHour/2 << std::endl;
+        ++i;
     }
 }
 
