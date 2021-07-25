@@ -131,7 +131,7 @@ void Hotel::layOffEmployees(int numFired)
     if (grossRevenue < overheads)
     {
         std::cout << "Times are tough.." << std::endl;
-        for (int i = 0; i < numFired; i++)
+        for (int i = 0; i < numFired; ++i)
         {
             std::cout << "Employee " << i + 1 << " fired.." << std::endl;
         }
@@ -205,7 +205,7 @@ void Printer::printCopies(int noCopies)
 {
     printJob.numCopies = noCopies;
     printDocument();
-    for (int i = 0; i < noCopies; i++)
+    for (int i = 0; i < noCopies; ++i)
     {
         if (paperLevel == 0)
         {
@@ -419,7 +419,7 @@ void Engine::propelVehicle(float distance, float speed)
     combustFuel(fuelRequired);
     std::cout << "This engine has " << noCylinders << " cylinders. Fire the pistons!" << std::endl;
     
-    for (int i = 0; i < noCylinders; i++) 
+    for (int i = 0; i < noCylinders; ++i) 
     {
         firePistons(i);
     }
@@ -494,7 +494,7 @@ void Trailer::disconnect()
 void Trailer::takeOffWheels()
 {
     std::cout << "Removing wheels!" << std::endl;
-    for (int i = 0; i < numWheels; i++)
+    for (int i = 0; i < numWheels; ++i)
     {
         std::cout << "Wheel " << i+1 << " removed.." << std::endl;
     }
